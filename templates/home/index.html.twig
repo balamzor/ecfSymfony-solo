@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  BiblioTech : la bibliothèque 1.5
+{% endblock %}
+
+{% block navbar %}
+  {% include 'components/_navbar.html.twig' %}
+{% endblock %}
+
+{% block home %}
+  <div class="m-0">
+    <div class="container m-6 pb-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5">
+        <div class="col-10 mx-auto col-sm-8 col-lg-6">
+          <img src="https://plus.unsplash.com/premium_photo-1703701579660-8481915a7991?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="d-block mx-lg-auto img-fluid" alt="" loading="lazy" />
+        </div>
+        <div class="col-lg-6">
+          <div class="lc-block mb-3">
+            <div editable="rich">
+              <h2 class="fw-bold display-5">{{ 'home.title'|trans }}</h2>
+            </div>
+          </div>
+
+          <div class="lc-block mb-3">
+            <div editable="rich">
+              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore iusto nemo aliquid totam reiciendis tempora eaque optio neque minus, ea facere reprehenderit commodi dicta omnis voluptates animi adipisci, quos doloremque natus ullam! Rem, ratione animi, impedit error sint voluptatum quam quidem magnam velit eum, accusantium nihil recusandae! Architecto, quibusdam eius?</p>
+            </div>
+          </div>
+
+          <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
+            <a class="btn btn-primary px-4 me-md-2" href="#" role="button">{{ 'home.btn-new'|trans }}</a>
+            <a class="btn btn-outline-secondary px-4" href="#" role="button">{{ 'home.see-books'|trans }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="m-0 p-5 bg-custom text-dark d-flex justify-content-center gap-5">
+    <div class="container row">
+      <div class="col">
+        <h3>{{ 'home.borrow-books'|trans }}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iste eligendi saepe rerum eveniet aliquid provident, doloremque neque est sed?</p>
+      </div>
+      <div class="col">
+        <h3>{{ 'home.rent-room'|trans }}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iste eligendi saepe rerum eveniet aliquid provident, doloremque neque est sed?</p>
+      </div>
+      <div class="col">
+        <h3>{{ 'home.be-title'|trans }}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis iste eligendi saepe rerum eveniet aliquid provident, doloremque neque est sed?</p>
+      </div>
+    </div>
+  </div>
+  <div class="container my-5">
+    <div class="row">
+      <div class="col">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3230.0326253303633!2d2.3370587!3d48.85740209999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e276cf5dafd%3A0x1ca49b72a214e263!2sBiblioth%C3%A8que%20Mazarine!5e1!3m2!1sfr!2sfr!4v1733995863000!5m2!1sfr!2sfr" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="col p-5">
+        <h3 class="text-center">{{ 'home.join-title'|trans }}</h3>
+        <p class="text-center">{{ 'home.come'|trans }}</p>
+        <p class="text-center">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus maxime quo amet odio, quaerat earum pariatur explicabo autem soluta aut quidem officiis non? Modi ad quo praesentium quas necessitatibus esse.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block footer %}
+  {% include 'components/_footer.html.twig' %}
+{% endblock %}

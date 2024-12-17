@@ -1,0 +1,28 @@
+nimportequoi: "Hello"
+form:
+  first_name: "First name"
+
+home:
+  title: "BiblioTech: Your Library 1.5"
+  btn-new: "Create an Account"
+  see-books: "See Our Books"
+  borrow-books: "Borrow Books!"
+  rent-room: "Rent Rooms!"
+  be-title: "Feel at Home with Us!"
+  join-title: "Join Us Now"
+  come: "Come and see our magnificent library and the gargantuan amount of knowledge at your disposal!"
+
+navbar:
+  accueil: "Home"
+  our-books: "Our books"
+  our-workplaces: "Our workplaces"
+  admin: "Administration"
+  users: "Users"
+  books: "Books"
+  workplaces: "Workplaces"
+  welcome: "Welcome"
+  account: "My account"
+  login: "Log in"
+  logout: "Log out"
+  sign: "Sign up"
+  return: "Return to the site"

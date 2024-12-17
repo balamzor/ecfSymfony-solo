@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Nouvelle Salle
+{% endblock %}
+
+{% block body %}
+  <h1>Créer une nouvelle salle</h1>
+
+  {{ include('admin_workplace/_form.html.twig') }}
+
+  <a href="{{ path('app_admin_workplace_index') }}" class="btn btn-secondary" style="margin-top:10px">Retour aux salles</a>
+{% endblock %}

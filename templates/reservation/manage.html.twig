@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Gérer l'événement
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <h2>Modifier la réservation</h2>
+
+    <h3>Salle {{ workspace.name }}</h3>
+    <p>
+      <strong>Date de début :</strong> {{ reservation.RentalStart|date('d-m-Y à H:i') }}
+    </p>
+    <p>
+      <strong>Date de fin :</strong> {{ reservation.RentalEnd|date('d-m-Y à H:i') }}
+    </p>
+
+    <!-- Affichage des messages flash -->
+    {% for message in app.flashes('error') %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('success') %}
+      <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+
+    <!-- Formulaire de modification -->
+    {{ form_start(form) }}
+    <div class="form-group">{{ form_label(form.RentalStart) }}
+      {{ form_widget(form.RentalStart, { attr: { class: 'form-control' } }) }}</div>
+    <div class="form-group">{{ form_label(form.RentalEnd) }}
+      {{ form_widget(form.RentalEnd, { attr: { class: 'form-control' } }) }}</div>
+    <button type="submit" class="btn btn-primary" style="margin-top:10px">{{ button_label|default('Mettre à jour') }}</button>
+    {{ form_end(form) }}
+    <br />
+
+    <!-- Bouton de suppression -->
+    <form id="delete-form-{{ reservation.id }}" method="POST" action="{{ path('app_reservation_delete', { id: reservation.id }) }}" style="display: inline-block;">
+      <button type="button" class="btn btn-danger" onclick="deleteEvent({{ reservation.id }}, {{ reservation.workspace.id }})">Supprimer l'événement</button>
+    </form>
+    <a href="{{ path('app_reservation', { id: workspace.id }) }}" class="btn btn-secondary">Retour au calendrier</a>
+  </div>
+{% endblock %}
+
+{% block js %}
+  <script>
+    function deleteEvent(reservationId, workspaceId) {
+      if (confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) {
+        fetch(`/reservation/delete/${reservationId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify({ id: reservationId })
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              alert('Réservation supprimée avec succès')
+              // Rediriger vers la page de détail de la salle après la suppression
+              window.location.href = `/reservation/${workspaceId}` // Utiliser l'ID de la salle pour la redirection
+            } else {
+              alert('Erreur lors de la suppression : ' + data.error)
+            }
+          })
+          .catch((error) => console.error('Erreur:', error))
+      }
+    }
+  </script>
+{% endblock %}

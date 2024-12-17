@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Salles de travail
+{% endblock %}
+
+{% block navbar %}
+  {% include 'components/_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <h1>Salles de travail disponibles</h1>
+
+  <div class="d-flex p-2 flex-wrap">
+    {% for workspace in workspaces %}
+      <div class="card" style="width: 18rem; margin: 10px 10px">
+        <img src="{{ asset('../images/workspaces/' ~ workspace.image) }}" class="card-img-top" style="height: 18rem; object-fit: cover" alt="photo de la salle" />
+        <div class="card-body">
+          <h5 class="card-title">{{ workspace.name }}</h5>
+          <p class="card-text">{{ workspace.capacity }} personnes</p>
+          <a href="{{ path('workspace_detail', { id: workspace.id }) }}" class="btn btn-primary">En savoir plus</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

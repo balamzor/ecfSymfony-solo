@@ -1,0 +1,24 @@
+{% block body %}
+  <h2>Réservations existantes</h2>
+  <ul>
+    {% for reservation in reservations %}
+      <li>{{ reservation.workspace.name }} | {{ reservation.rentalStart|date('d/m/Y H:i') }} - {{ reservation.rentalEnd|date('d/m/Y H:i') }}</li>
+    {% endfor %}
+  </ul>
+
+   <h2>Réserver la salle: {{ workspace.name }}</h2>
+
+  {{ form_start(form) }}
+  <div class="rounded shadow" style="padding:20px; margin-bottom:20px; width:300px">
+    <div class="form-group">
+        {{ form_label(form.RentalStart) }}
+        {{ form_widget(form.RentalStart, {'attr': {'class': 'form-control mb-4'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.RentalEnd) }}
+        {{ form_widget(form.RentalEnd, {'attr': {'class': 'form-control mb-4'}}) }}
+    </div>
+    <button type="submit" class="btn btn-info" style="margin-top:10px">Réserver la salle</button>
+  </div>
+  {{ form_end(form) }}
+{% endblock %}

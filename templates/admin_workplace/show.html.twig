@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Workspace
+{% endblock %}
+
+{% block body %}
+  <h1>Workspace</h1>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <th>Nom</th>
+        <td>{{ workspace.name }}</td>
+      </tr>
+      <tr>
+        <th>Capacité</th>
+        <td>{{ workspace.capacity }} personnes</td>
+      </tr>
+      <tr>
+        <th>Équipements</th>
+        <td>
+          <ul>
+            {% for equipment in workspace.equipment %}
+              <li>{{ equipment.label }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Image</th>
+        <td>
+          <p>{{ workspace.image }}</p>
+          <img src="{{ asset('images/workspaces/' ~ workspace.image) }}" class="card-img-top" style="height: 18rem; width:18rem; object-fit: cover" alt="photo de la salle" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <a href="{{ path('app_admin_workplace_index') }}" class="btn btn-secondary">Retour aux salles</a>
+
+  <a href="{{ path('app_admin_workplace_edit', { id: workspace.id }) }}" class="btn btn-primary">Modifier</a>
+
+  {{ include('admin_workplace/_delete_form.html.twig') }}
+{% endblock %}

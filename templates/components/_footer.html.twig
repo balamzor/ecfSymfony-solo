@@ -1,0 +1,16 @@
+{% block footer %}
+  <footer class="py-3 my-4 position-relative bottom-0 bg-custom w-100 text-dark mb-0 mt-auto">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3 text-dark">
+      <li class="nav-item">
+        <a href="/" class="nav-link px-2 text-dark fw-bold">{{ 'navbar.accueil'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link px-2 text-dark fw-bold">{{ 'navbar.books'|trans }}</a>
+      </li>
+      <li class="nav-item">
+        <a href="{{ path('app_workspaces') }}" class="nav-link px-2 text-dark fw-bold">{{ 'navbar.workplaces'|trans }}</a>
+      </li>
+    </ul>
+    <p class="text-center text-dark fw-bold">© 2024-2025 BiblioTech - BaLaM, Bhann, Eidyl</p>
+  </footer>
+{% endblock %}

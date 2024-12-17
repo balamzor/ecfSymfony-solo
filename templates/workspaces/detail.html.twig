@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Détails de la salle
+{% endblock %}
+
+{% block navbar %}
+  {% include 'components/_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <div class="container" style="margin-bottom:20px">
+    <h1>Salle {{ workspace.name }}</h1>
+    <img src="{{ asset('../images/workspaces/' ~ workspace.image) }}" class="rounded" style="height: 18rem; width: 30rem; object-fit: cover; margin-bottom:10px" alt="photo de la salle" />
+    <p style="font-weight:bold">Capacité : {{ workspace.capacity }} personnes</p>
+
+    <h2>Équipements disponibles :</h2>
+    <ul>
+      {% for equipment in workspace.equipment %}
+        <li>{{ equipment.label }}</li>
+      {% endfor %}
+    </ul>
+
+    <a href="{{ path('app_reservation', { id: workspace.id }) }}" class="btn btn-primary">Réserver cette salle</a>
+
+    <a href="{{ path('app_workspaces') }}" class="btn btn-secondary">Voir les autres salles</a>
+  </div>
+{% endblock %}

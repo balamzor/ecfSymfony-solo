@@ -1,0 +1,55 @@
+#calendar {
+  height: auto;
+  overflow: auto;
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.fc-col-header {
+  background-color: #b08bd5;
+  color: white;
+  font-weight: bold;
+}
+
+.fc .fc-view {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.fc-button {
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: #b08bd5 !important;
+  color: rgb(27, 27, 27) !important;
+  border: none !important;
+}
+
+.fc-button:hover {
+  background-color: #9932cc !important;
+}
+
+.fc-daygrid-day.fc-day-today {
+  background-color: #e6e6fa;
+}
+
+.fc-event {
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+
+.fc-col-header-cell a {
+  color: #0d0d0d !important;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: default;
+}
+
+.fc-col-header-cell {
+  border: 1px solid #7e7e7e !important;
+}
+
+.fc-day-today {
+  background-color: #c9ade5 !important;
+  color: white !important;
+  border: 2px solid #7e7e7e !important;
+}

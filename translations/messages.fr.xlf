@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="sxnb5Ey" resname="form.confirm_password">
+        <source>form.confirm_password</source>
+        <target>Confirmer le mot de passe</target>
+      </trans-unit>
+      <trans-unit id="yjqmSBK" resname="form.password">
+        <source>form.password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="2W0WCz6" resname="form.first_name">
+        <source>form.first_name</source>
+        <target>Prénom</target>
+      </trans-unit>
+      <trans-unit id="4kVx6WK" resname="form.last_name">
+        <source>form.last_name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="DOAWeTf" resname="form.address">
+        <source>form.address</source>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="OXQu0Bg" resname="form.postal">
+        <source>form.postal</source>
+        <target>Code postal</target>
+      </trans-unit>
+      <trans-unit id="7ldXRYA" resname="form.telephone">
+        <source>form.telephone</source>
+        <target>Téléphone</target>
+      </trans-unit>
+      <trans-unit id="XUsHqAd" resname="form.city">
+        <source>form.city</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="3IGOm9D" resname="form.email">
+        <source>form.email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="kohqA_C" resname="form.submit">
+        <source>form.submit</source>
+        <target>Valider</target>
+      </trans-unit>
+      <trans-unit id="qm_COTU" resname="form.cancel">
+        <source>form.cancel</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="ZUtjqDu" resname="form.delete">
+        <source>form.delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="hERM1ab" resname="nimportequoi">
+        <source>nimportequoi</source>
+        <target>Bonjour</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

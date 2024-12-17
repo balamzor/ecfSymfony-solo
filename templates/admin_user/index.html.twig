@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block navbar %}{% include 'components/_navbaradmin.html.twig' %}{% endblock %}
+
+
+{% block home %}
+    <h1 class="text-center mb-5">Administration des utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Téléphone</th>
+                <th>Date de naissance</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% for role in user.roles %}
+                    {{ role }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.postal }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.telephone }}</td>
+                <td>{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}"><button class="btn btn-secondary py-1">Détails</button></a>
+                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}"><button class="btn btn-primary py-1">Modifier</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_user_new') }}"><button class="btn btn-success">Ajouter</button></a>
+{% endblock %}

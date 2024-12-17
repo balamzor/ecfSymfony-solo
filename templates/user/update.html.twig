@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre profil{% endblock %}
+
+{% block navbar %}{% include 'components/_navbar.html.twig' %}{% endblock %}
+
+{% block body %}
+    <div class="container f-flex flex-column align-items-center justify-content-space-between w-50 shadow p-5 rounded-4 mt-5 bg-light">
+        <h1>Éditez votre  compte</h1>
+        <div class="w-60 d-flex flex-column gap-5 align-items-center justify-content-center mt-5 form-group">
+            {{ form_start(form) }}
+                <div class="d-flex flex-row gap-3 justify-content-between mb-3">
+                    {# <label class="col-form-label">Prénom</label> #}
+                    {{ form_row(form.firstName, { 'attr': { 'class': 'form-control' } }) }}
+                    {# <label class="col-form-label">Nom</label> #}
+                    {{ form_row(form.lastName, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                <div class="d-flex flex-row gap-3 justify-content-between mb-3 mt-3">
+                    {# <label class="col-form-label">Date de naissance</label> #}
+                    {{ form_row(form.birthDate, { 'attr': { 'class': 'form-control' } }) }}
+                    {# <label class="col-form-label">Telephone</label> #}
+                    {{ form_row(form.telephone, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                {# <label class="col-form-label">Adresse</label> #}
+                {{ form_row(form.address, { 'attr': { 'class': 'form-control' } }) }}
+                <div class="d-flex flex-row gap-3 justify-content-between mb-3 mt-3">
+                    {# <label class="col-form-label">Code postal</label> #}
+                    {{ form_row(form.postal, { 'attr': { 'class': 'form-control' } }) }}
+                    {# <label class="col-form-label">Ville</label> #}
+                    {{ form_row(form.city, { 'attr': { 'class': 'form-control' } }) }}
+                </div>
+                {# <label>Email</label> #}
+                {{ form_row(form.email, { 'attr': { 'class': 'form-control' } }) }}
+                <div style="color: red; font-weight: bold">{{ form_errors(form)}}</div>
+                <button type="submit" class="btn btn-primary mt-3">Mettre à jour</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

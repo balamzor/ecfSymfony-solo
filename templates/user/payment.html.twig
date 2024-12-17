@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payez votre abonnement{% endblock %}
+
+
+
+
+
+{% block body %}
+    <h1 class="text-center mb-5">Paiement</h1>
+    <h3 class="text-center">Récapitulatif de vos informations de facturations :</h3>
+            <div class="container w-50">
+                <table class="container table border rounded mt-5 shadow">
+                    <tr>
+                        <th class="p-3">Prénom</th>
+                        <td class="p-3">{{ app.user.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Nom</th>
+                        <td class="p-3">{{ app.user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Email</th>
+                        <td class="p-3">{{ app.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Adresse</th>
+                        <td class="p-3">{{ app.user.address }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Code postal</th>
+                        <td class="p-3">{{ app.user.postal }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Ville</th>
+                        <td class="p-3">{{ app.user.city }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Téléphone</th>
+                        <td class="p-3">{{ app.user.telephone }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Date de naissance</th>
+                        <td class="p-3">{{ app.user.birthDate|date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Choix de l'abonnement</th>
+                        <td class="p-3">{{ type }}</td>
+                    </tr>
+                    <tr>
+                        <th class="p-3">Prix de l'abonnement</th>
+                        <td class="p-3 fw-bold">{{ prix }}€</td>
+                    </tr>
+                </table>
+            </div>
+            <h3 class="mt-5 text-center">Informations de paiement</h3>
+            <div class="container table border rounded mt-5 mb-5 shadow w-50 p-3">
+            {{ form_start(form, { method: 'POST' }) }}
+            {{ form_errors(form) }}
+            {% for field in form %}
+                {{ form_errors(field) }}
+            {% endfor %}
+                 {% for flash_error in app.flashes('error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+            {% endfor %}
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        {{ form_label(form.firstName) }}
+                        {{ form_widget(form.firstName) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        {{ form_label(form.lastName) }}
+                        {{ form_widget(form.lastName) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        {{ form_label(form.cbNumbers) }}
+                        {{ form_widget(form.cbNumbers) }}
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        {{ form_label(form.cbDate) }}
+                        {{ form_widget(form.cbDate) }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="input-group input-group-sm">
+                        {{ form_label(form.cbVerif) }}
+                        {{ form_widget(form.cbVerif) }}
+                    </div>
+                </div>
+                <div class="col">
+                    {# {{ form_widget(form.submit) }} #}
+                    <button type="submit" class="btn btn-primary w-100">Effectuer le paiement</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+            {# <form method="post" action="{{ path('payment_user', {'id': idAbo}) }}">
+                 <div class="row">
+                    <div class="col">
+                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Prénom</span>
+                        </div>
+                        <input type="text" class="form-control" name="firstName" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ app.user.firstName }}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Prénom</span>
+                        </div>
+                        <input type="text" class="form-control" name="lastName" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="{{ app.user.lastName }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Carte bleue VISA</span>
+                        </div>
+                        <input class="form-control" name="cbNumbers" id="ccn" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Date de validité</span>
+                        </div>
+                        <input type="date" value="{{ "now"|date("Y-m-d") }}" min="{{ "now"|date("Y-m-d") }}" max="2035-01-01" class="form-control" name="cbDate" placeholder="Date de validité">
+                    </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col">
+                    <div class="input-group input-group-sm">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Code de sécurité</span>
+                        </div>
+                        <input type="tel" maxlength="3" class="form-control" name="cbVerif">
+                    </div>
+                    <input type="hidden" class="form-control" name="csrf" value="{{ token }}">
+                    </div>
+                    <div class="col">
+                         <button type="submit" class="btn btn-primary w-100">Effectuer le paiement</button>
+                    </div>
+                </div>
+            </form> #}
+        </div>
+
+{% endblock %}

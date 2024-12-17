@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Modifier la salle
+{% endblock %}
+
+{% block body %}
+  <h1>Modifier la salle</h1>
+
+  {{ include('admin_workplace/_form.html.twig', { button_label: 'Valider' }) }}
+
+  <a href="{{ path('app_admin_workplace_index') }}" class="btn btn-secondary" style="margin-top:10px">Retour aux salles</a>
+
+  {{ include('admin_workplace/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Livre{% endblock %}
+
+{% block navbar %}{% include 'components/_navbar.html.twig' %}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>{{ book.title }}</h1>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{ book.title }}</h4>
+            <p class="card-text">{{ book.description }}</p>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Auteur:</strong> {{ book.author }}</li>
+                <li class="list-group-item"><strong>Date de publication:</strong> {{ book.year|date('Y') }}</li>
+            </ul>
+            <a href="{{ path('app_book') }}" class="btn btn-secondary mt-3">Retour à la liste des livres</a>
+        </div>
+    </div>
+
+    <section class="mt-5">
+        <h2>Commentaires</h2>
+        {% if app.user %}
+            {{ form_start(form) }}
+            {{ form_row(form.note) }}
+            {{ form_row(form.comment) }}
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            {{ form_end(form) }}
+        {% endif %}
+        <div class="mt-3"><h3>D'autres utilisateurs ont noté ce livre</h3></div>
+        {% for comment in notations %}
+        <div class="mt-3">
+            <div class="card shadow-sm border border-secondary">
+                <div class="card-body">
+                    <p><strong>Note:</strong> {{ comment.note }}</p>
+                    <p><strong>Commentaire:</strong> {{ comment.comment }}</p>
+                    {# <p><small>Posté par {{ comment.userId.username }} le {{ comment.date|date('d/m/Y H:i') }}</small></p> #}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    
+    </section>
+</div>
+{% endblock %}
+

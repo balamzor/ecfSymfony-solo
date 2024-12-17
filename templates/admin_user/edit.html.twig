@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit User{% endblock %}
+{% block navbar %}{% include 'components/_navbaradmin.html.twig' %}{% endblock %}
+{% block body %}
+    <h2 class="text-center mb-5">Édition de {{ user.firstName }} {{ user.lastName }}({{ user.email }})</h2>
+
+        {{ include('admin_user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <div class="container d-flex flex-row gap-3">
+        <a href="{{ path('app_admin_user_index') }}"><button class="btn btn-secondary">Retour</button></a>
+        {{ include('admin_user/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

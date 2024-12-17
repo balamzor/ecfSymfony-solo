@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Les salles de travail
+{% endblock %}
+
+{% block navbar %}
+  {% include 'components/_navbaradmin.html.twig' %}
+{% endblock %}
+
+{% block body %}
+  <h1>Salles de travail</h1>
+
+  <div class="d-flex p-2 flex-wrap">
+    {% for workspace in workspaces %}
+      <div class="card" style="width: 18rem; margin: 10px 10px">
+        <img src="{{ asset('../images/workspaces/' ~ workspace.image) }}" class="card-img-top" style="height: 18rem; object-fit: cover" alt="photo de la salle" />
+        <div class="card-body">
+          <h5 class="card-title">{{ workspace.name }}</h5>
+          <p class="card-text">{{ workspace.capacity }} personnes</p>
+          <a href="{{ path('app_admin_workplace_show', { id: workspace.id }) }}" class="btn btn-secondary" style="margin-top: 10px;">Voir le détail</a>
+          <a href="{{ path('app_admin_workplace_edit', { id: workspace.id }) }}" class="btn btn-primary" style="margin-top: 10px;">Modifier</a>
+          <a href="{{ path('app_reservation_reservations', { id: workspace.id }) }}" class="btn btn-primary" style="margin-top: 10px;">Voir les réservations</a>
+        </div>
+      </div>
+    {% else %}
+      <tr>
+        <td colspan="5">no records found</td>
+      </tr>
+    {% endfor %}
+  </div>
+
+  <a href="{{ path('app_admin_workplace_new') }}" class="btn btn-success">Ajouter une salle</a>
+{% endblock %}
